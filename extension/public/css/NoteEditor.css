@@ -1,0 +1,121 @@
+html{
+    height: 100%;
+}
+
+body{
+    padding: 30px;
+    height: 100%;
+}
+
+.line{
+    height: 5px;
+    background-color: rgb(31, 31, 31);
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 80%;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.row h3,.row div, .row p{
+    display: inline-block;
+    width: fit-content;
+}
+
+.timer{
+    display: flex;
+    flex-direction: row;
+}
+
+table{
+    margin-top: 25px;
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+table td{
+    padding: 20px;
+}
+
+table .timestamp{
+    border-right: 1px solid black;
+    text-align: center;
+}
+
+table p{
+    margin: 0;
+    word-wrap: break-word;
+}
+
+textarea{
+    width: 100%;
+    resize: none;
+    border: none;
+    outline: none;
+}
+
+.footer_container{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background-color: transparent;
+    padding-bottom: 60px;
+}
+
+footer{
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 80%;
+    height: 100%;
+
+    padding: 10px 10px;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+footer button{
+    padding: 20px;
+}
+
+#startBtn {
+    background-color: transparent;
+}
+
+#pauseBtn {
+    background-color: transparent;
+}
+
+.header {
+    margin-top: 35px;
+    margin-bottom: 35px;
+}
+
+a.button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+
+    text-decoration: none;
+    color: initial;
+
+    position: absolute;
+    bottom: 50px;
+    right: 0%;
+    transform: translate(-50%, 0%);
+    background-color: transparent;
+    padding: 8px;
+    text-align: center;
+    font-size: 14px;
+    border: 1px solid black;
+}

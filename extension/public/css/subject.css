@@ -1,0 +1,95 @@
+html{
+    padding: 20px 50px 20px 50px;
+}
+
+.thumbnail{
+    width: 100%;
+    height: auto;
+    /* margin: 10px; */
+}
+
+.col-md-8{
+    text-align: left;
+    vertical-align: bottom;
+    /* margin-left: 10px; */
+    /* margin-bottom: 10px; */
+}
+
+.note_wrapper{
+    display: flex;
+    flex-direction: column;
+}
+.cover_img_holder{
+    overflow: hidden;
+    padding: 10px;
+}
+img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+.line{
+    /* justify-self: flex-start; */
+    height:1px;
+    width: 80%;
+    background-color: rgb(201, 201, 201);
+    margin-bottom: 40px;
+    margin-top: 20px;
+}
+.horizontal{
+    display: inline-block;
+}
+.vertical{
+    display: inline-block;
+    vertical-align: top;
+    /* margin-top: 60px;
+    margin-left: 10px; */
+}
+.preview{
+    display: inline-block;
+    /* margin-left: 30px;
+    margin-top: 60px; */
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+    background-color: dimgray;
+}
+
+.title{
+    font-style: italic;
+    text-align: center;
+    color: white;
+    margin-top: 10px;
+    font-size: 30px;
+}
+.subtitle{
+    text-align:center;
+    color: whitesmoke;
+    margin-top:0px;
+}
+.body{
+    color:white;
+    margin: 15px;
+    margin-top: 0px;
+}
+
+.eon{
+    color: whitesmoke;
+    margin:15 px;
+    text-align: center;
+    font-style: italic;
+}
+.grid_container{
+    display: grid;
+    grid-template-columns: 3fr 1fr 2fr;
+    gap: 50px;
+}
+.card{
+    width: 100%;
+    padding:10px;
+}
+
+.card .card-body{
+    width: 100%;
+}

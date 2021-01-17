@@ -1,0 +1,26 @@
+{
+    "manifest_version": 2,
+    "name": "HTN",
+    "version": "0.0.1",
+    "browser_action":{
+        "default_popup": "extension/public/views/popups/onboarding.html"
+    },
+    "background": {
+        "scripts": [
+            "extension/background.js"
+        ]
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "*://*.youtube.com/*"
+            ],
+            "js": [
+                "extension/inject/asdf.js"
+            ],
+            "run_at": "document_start"
+        }
+    ],
+    "permissions": [
+    ]
+}

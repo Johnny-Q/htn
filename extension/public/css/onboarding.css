@@ -1,0 +1,23 @@
+#onboardDiv  {
+    border: solid black 3px;
+    width: 200px;
+    height: 200px;
+    margin: 50px;
+    padding-top: 110px;
+    padding-left: 30px;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+a {
+    color: black;
+    font-size: 28px;
+    text-decoration: none;
+}
+
+html{
+    width: 350px;
+    height: 550px;
+}

@@ -1,0 +1,29 @@
+html{
+    padding: 20px 50px 20px 50px;
+    font-family: 'Poppins', sans-serif;
+}
+}
+.header{
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    margin-bottom: 20px;
+}
+h4{
+    display: inline-block;
+    margin:0;
+    margin-right: 25px;
+}
+.notebooks_grid{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 50px;
+    /* display: flex;
+    flex-flow: row-reverse;
+    flex-wrap: wrap; */
+}
+.cover_img{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

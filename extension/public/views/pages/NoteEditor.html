@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- import bootstrap -->
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <script src="../../js/bootstrap.bundle.min.js"></script>
+
+    <link rel="stylesheet" href="../../css/NoteEditor.css">
+
+    <script src="../../js/Timer.js" defer></script>
+    <script src="../../js/NoteEditor.js" defer></script>
+    <title>NoteEditor</title>
+</head>
+
+<body>
+    <div class="header">
+        <div class="row">
+            <h3>Click to add title</h3>
+            <div class="timer">
+                <div class="btn-group">
+                    <button id="startBtn">Start</button>
+                    <button id="pauseBtn">Stop</button>
+                </div>
+                <input type="number" name="" id="speed" value="1" min="0.25" step="0.25">
+                <p id="timeText">00:00</p>
+            </div>
+        </div>
+        <div class="line"></div>
+        <div class="row">
+            <small>https://youtube.com/asdf</small>
+        </div>
+    </div>
+    <table id="notes">
+        <colgroup>
+            <col span="1" style="width: 15%;">
+            <col span="1" style="width: 85%;">
+        </colgroup>
+        <thead>
+            <th></th>
+            <th></th>
+        </thead>
+        <tbody>
+        </tbody>
+        <tbody>
+            <tr>
+                <td class="timestamp temp_timestamp">00:00</td>
+                <td><textarea onkeyup="textAreaAdjust(this)" name="" id="textarea" cols="30" rows="1"
+                        placeholder="Start timer then start typing notes here..."></textarea>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+    <!-- <h1>NoteEditor Test</h1>
+    <h1>Timer</h1>
+    <div class="btn-group">
+        <button id="startBtn">Start</button>
+        <button id="pauseBtn">Stop</button>
+    </div>
+    <input type="number" name="" id="speed" value="1" min="0.25" step="0.25">
+    <p id="timeText">00:00</p>
+    <table id="notes">
+        <thead>
+            <th></th>
+            <th></th>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <textarea name="" id="textarea" cols="30" rows="10"></textarea> -->
+</body>
+<div class="footer_container">
+    <footer>
+        <a href="../pages/chooseNotebook.html" target="_blank"class="button">Done Note</a>
+    </footer>
+</div>
+
+</html>

@@ -1,0 +1,46 @@
+.cards_grid{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+html{
+    padding: 50px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.answer {
+    position: absolute;
+    padding-top: 130px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .15s ease;
+    background-color: white;
+    text-align: center;
+}
+
+.question {
+    text-align: center;
+    margin: 10px;
+}
+
+.card:hover .answer {
+    opacity:1;
+}
+
+.card {
+    height: 300px;
+    padding-top: 130px;
+    font-size: 18px;
+}
+
+h1 {
+    margin-bottom: 50px;
+}
+
+

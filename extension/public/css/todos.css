@@ -1,0 +1,59 @@
+html{
+    width: 360px;
+    height: 560px;
+}
+
+.hidden{
+    display: none;
+}
+body {
+    font-family: 'Poppins', sans-serif;
+    padding: 30px;
+    padding-top: 40px;
+    height: 100%;
+    position: relative;
+}
+.header{
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: baseline; 
+}
+h3{
+    margin: 0;
+}
+a {
+    color: black;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.addnewvideo {
+    text-align: right;
+}
+
+.newVideo {
+   font-size: 14px;
+}
+
+.nums {
+    font-size: 14px;
+}
+
+a.button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+
+    text-decoration: none;
+    color: initial;
+
+    position: absolute;
+    bottom: 50px;
+    right: 0%;
+    transform: translate(-50%, 0%);
+    background-color: transparent;
+    padding: 8px;
+    text-align: center;
+    font-size: 14px;
+}
