@@ -19,6 +19,32 @@
 </head>
 
 <body>
+    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Select Notebook</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="populate_options">
+                    <!-- <input type="radio" id="Chemistry" name="Notebook" value="Chemistry">
+                    <label for="Chemistry">Chemistry</label><br>
+                    <input type="radio" id="RocketScience" name="Notebook" value="RocketScience">
+                    <label for="RocketScience">Rocket Science</label><br>
+                    <input type="radio" id="Architecture" name="Notebook" value="Architecture">
+                    <label for="Architecture">Architecture</label><br>
+                    <input type="radio" id="Art" name="Notebook" value="Art">
+                    <label for="Art">Art</label><br> -->
+                </div>
+                <div class="modal-footer">
+                    <button id="add_to_notebook" type="button" class="btn btn-primary" data-dismiss="modal">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="header">
         <div class="row">
             <input type="text" name="" id="title" placeholder="Click to add title" class="edit_title h3">
@@ -70,7 +96,7 @@
 </body>
 <div class="footer_container">
     <footer>
-        <a href="../pages/chooseNotebook.html" target="_blank"class="button">Done Note</a>
+        <a id="modal_open" data-toggle="modal" data-target="#addModal" class="button">Done Note</a>
     </footer>
 </div>
 

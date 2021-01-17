@@ -16,6 +16,10 @@ var Note = /** @class */ (function () {
         var card = new Flashcard(ques, ans);
         this.flashcardList.push(card);
     };
+    Note.prototype.addTimestamps = function () {
+    };
+    Note.prototype.addTextblocks = function () {
+    };
     Note.prototype.deleteFlashCard = function (index) {
         this.flashcardList.splice(index, 1);
     };
@@ -40,10 +44,23 @@ var Notebook = /** @class */ (function () {
             window.open("../pages/subject.html", "__blank");
         };
     }
-    Notebook.prototype.addNote = function () {
+    Notebook.prototype.addNote = function (title) {
+        var _this = this;
         var n = new Note();
         this.notesList.push(n);
         //update the text;
+        chrome.storage.local.get("notes", function (res) {
+            if (!("notes" in res))
+                return;
+            var notes = res.notes;
+            notes.data.push({
+                "id": notes.last_id + 1,
+                title: title,
+                "notebook_id": _this.id
+            });
+            notes.last_id++;
+            chrome.storage.local.set({ "notes": notes });
+        });
     };
     Notebook.prototype.deleteNote = function (index) {
         this.notesList.splice(index, 1);
@@ -57,15 +74,30 @@ var NotebookManager = /** @class */ (function () {
         this.notebookGrid = notebookGrid;
         this.notebookList = [];
     }
-    NotebookManager.prototype.addNotebook = function (picture_url, name) {
+    NotebookManager.prototype.addNotebook = function (picture_url, name, update) {
+        if (update === void 0) { update = true; }
         var nBook = new Notebook(picture_url, name);
         this.notebookList.push(nBook);
         this.notebookGrid.append(nBook.notebookDiv);
-        chrome.storage.local.set({ "notebooks": this.exportNotebooks() });
+        //update storage
+        if (update) {
+            chrome.storage.local.get("notebooks", function (res) {
+                if (!("notebooks" in res))
+                    return;
+                var notebooks = res.notebooks;
+                notebooks.data.push({
+                    "id": notebooks.last_id + 1,
+                    picture_url: picture_url,
+                    name: name
+                });
+                notebooks.last_id++;
+                chrome.storage.local.set({ "notebooks": notebooks });
+            });
+        }
     };
-    NotebookManager.prototype.deleteNoteBook = function (index) {
-        this.notebookList.splice(index, 1);
-        chrome.storage.local.set({ "notebooks": this.exportNotebooks() });
+    NotebookManager.prototype.deleteNoteBook = function (id) {
+        // this.notebookList.splice(index, 1);
+        // chrome.storage.local.set({ "notebooks": this.exportNotebooks() });
     };
     NotebookManager.prototype.exportNotebooks = function () {
         var temp = [];
@@ -83,8 +115,8 @@ chrome.storage.local.get("notebooks", function (res) {
     if (res.notebooks.length == 0)
         return;
     console.log(res.notebooks);
-    res.notebooks.forEach(function (notebook) {
-        notebook_manager.addNotebook(notebook.pic_url, notebook.name);
+    res.notebooks.data.forEach(function (notebook) {
+        notebook_manager.addNotebook(notebook.picture_url, notebook.name, false);
     });
 });
 // notebook_manager.addNotebook("https://images.unsplash.com/photo-1602928309809-776bf9db8658?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2143&q=80", "Chemistry");

@@ -32,18 +32,13 @@ chrome storage
             "notebook_id":"",
         }]
     },
-    "noteTimestamps":{
+    "noteData":{
         "last_id": 0,
         "data":[{
-
-        }]
-    },
-    "noteBlocks":{
-        "last_id":0,
-        "data":[{
             "id":"",
-            "notes_id":"",
-            "text":"",
+            "notebook_id":"",
+            "timestamp":"",
+            "text":""
         }]
     },
     "noteCards":{

@@ -37,30 +37,23 @@ let default_settings = {
             "notebook_id":"",
         }*/]
     },
-    "noteTimestamps": {
+    "noteData":{
         "last_id": 0,
-        "data": [/*{
-            "id": "",
-            "notes_id": "",
-            "time": "",
-        }*/]
-    },
-    "noteBlocks": {
-        "last_id": 0,
-        "data": [/*{
-            "id": "",
-            "notes_id": "",
-            "text": "",
+        "data":[/*{
+            "id":"",
+            "notes_id":"",
+            "timestamp":"",
+            "text":""
         }*/]
     },
     "noteCards": {
         "last_id": 0,
-        "data": [/*{
+        "data": [{
             "id": "",
             "notes_id": "",
             "question": "",
             "answer": ""
-        }*/]
+        }]
     },
     "todos": [],
     "current_link": ""
