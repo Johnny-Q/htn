@@ -57,13 +57,6 @@ class Timer {
         minutes = Math.floor(totalSeconds / 60);
         totalSeconds = totalSeconds - (minutes * 60);
         sec = totalSeconds;
-        return `${hours ? `${this.make2Digits(hours)}:` : ""}${this.make2Digits(minutes)}:${this.make2Digits(sec)}`; //format time in seconds to HH:MM:SS
-    }
-
-    make2Digits(num: number): string {
-        if (num < 10) {
-            return "0" + num.toString();
-        }
-        return num.toString();
+        return `${hours ? `${make2Digits(hours)}:` : ""}${make2Digits(minutes)}:${make2Digits(sec)}`; //format time in seconds to HH:MM:SS
     }
 }

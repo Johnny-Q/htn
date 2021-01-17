@@ -83,8 +83,7 @@ class NoteEditor {
 let timer = new Timer(document.querySelector("#startBtn"), document.querySelector("#pauseBtn"), document.querySelector("#timeText"), document.querySelector("#speed"));
 let note_editor = new NoteEditor(timer, document.querySelector("textarea"), document.querySelector("#notes"));
 
-
-function textAreaAdjust(element) {
-    element.style.height = "1px";
-    element.style.height = (25 + element.scrollHeight) + "px";
+document.querySelector("textarea").onkeyup = function(){
+    this.style.height = "1px";
+    this.style.height = (25 + this.scrollHeight) + "px";
 }
