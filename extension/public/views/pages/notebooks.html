@@ -4,10 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <script src="../../js/Util.js"></script>
     <!-- import bootstrap -->
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
-    <script src="../../js/bootstrap.bundle.min.js"></script>
+    <script src="../../js/jquery-3.2.1.slim.min.js" defer></script>
+    <script src="../../js/popper.min.js" defer></script>
+    <script src="../../js/bootstrap.min.js" defer></script>
 
     <link rel="stylesheet" href="../../css/notebooks.css">
 
@@ -17,16 +19,47 @@
 </head>
 
 <body>
+
+    <!-- Button trigger modal -->
+    <!-- <button type="button" class="btn btn-primary">
+        Launch demo modal
+    </button> -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">New Notebook</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <label for="Notebook">Notebook Name:</label><br>
+                    <input type="text" id="Notebook" name="Notebook"><br>
+                    <label for="Image">Image Link:</label><br>
+                    <input type="text" id="Image" name="Image"><br>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="createNotebook">Create</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="header">
         <h4>Notebooks</h4>
-        <svg id="addNotebook" width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg id="addNotebook" data-toggle="modal" data-target="#exampleModalCenter" width="31" height="31"
+            viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="1.5" y="1.5" width="28" height="28" fill="white" stroke="black" stroke-width="3" />
             <path d="M9.18518 15.6211H15.5M21.8148 15.6211H15.5M15.5 15.6211V8.71875V22.0391" stroke="black"
                 stroke-width="3" />
         </svg>
     </div>
     <div class="notebooks_grid">
-        <div class="notebook">
+        <!-- <div class="notebook">
             <div class="cover_img ratio ratio-2x3"
                 style="background-image: url('https://images.unsplash.com/photo-1602928309809-776bf9db8658?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2143&q=80')">
             </div>
@@ -84,7 +117,7 @@
                 <small>18 Notes</small>
                 <h2 class="display-6">Art</h2>
             </div>
-        </div>
+        </div> -->
 </body>
 
 </html>

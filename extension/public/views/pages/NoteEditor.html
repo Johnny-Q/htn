@@ -4,10 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <script src="../../js/Util.js"></script>
     <!-- import bootstrap -->
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
-    <script src="../../js/bootstrap.bundle.min.js"></script>
+    <script src="../../js/jquery-3.2.1.slim.min.js" defer></script>
+    <script src="../../js/popper.min.js" defer></script>
+    <script src="../../js/bootstrap.min.js" defer></script>
 
     <link rel="stylesheet" href="../../css/NoteEditor.css">
 
@@ -19,20 +21,31 @@
 <body>
     <div class="header">
         <div class="row">
-            <h3>Click to add title</h3>
+            <input type="text" name="" id="title" placeholder="Click to add title" class="edit_title h3">
+            <!-- <h3 class="edit_title">Click to add title</h3> -->
             <div class="timer">
                 <div class="btn-group">
                     <button id="startBtn">Start</button>
                     <button id="pauseBtn">Stop</button>
                 </div>
-                <input type="number" name="" id="speed" value="1" min="0.25" step="0.25">
+                <select name="" id="speed">
+                    <option value="0.25">0.25x</option>
+                    <option value="0.50">0.50x</option>
+                    <option value="0.75">0.75x</option>
+                    <option value="1.00" selected>1.00x</option>
+                    <option value="1.25">1.25x</option>
+                    <option value="1.50">1.50x</option>
+                    <option value="1.75">1.75x</option>
+                    <option value="2.00">2.00x</option>
+                    <option value="3.00">3.00x</option>
+                    <option value="4.00">4.00x</option>
+                    <option value="5.00">5.00x</option>
+                </select>
+                <!-- <input type="number" name="" id="speed" value="1" min="0.25" step="0.25"> -->
                 <p id="timeText">00:00</p>
             </div>
         </div>
         <div class="line"></div>
-        <div class="row">
-            <small>https://youtube.com/asdf</small>
-        </div>
     </div>
     <table id="notes">
         <colgroup>
@@ -54,26 +67,6 @@
             </tr>
         </tbody>
     </table>
-
-
-
-    <!-- <h1>NoteEditor Test</h1>
-    <h1>Timer</h1>
-    <div class="btn-group">
-        <button id="startBtn">Start</button>
-        <button id="pauseBtn">Stop</button>
-    </div>
-    <input type="number" name="" id="speed" value="1" min="0.25" step="0.25">
-    <p id="timeText">00:00</p>
-    <table id="notes">
-        <thead>
-            <th></th>
-            <th></th>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
-    <textarea name="" id="textarea" cols="30" rows="10"></textarea> -->
 </body>
 <div class="footer_container">
     <footer>

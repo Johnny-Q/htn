@@ -92,7 +92,7 @@ class TodoManager {
         this.todoList.push(todoObj);
         this.listContainer.append(todoObj.todoDiv);
 
-        chrome.storage.local.set({"current_link":this.todoList[0].video_url});
+        chrome.storage.local.set({ "current_link": this.todoList[0].video_url });
 
         todoObj.todoDiv.querySelector(".btn-success").onclick = () => {
             this.removeTodo(todoObj.number);
@@ -113,16 +113,20 @@ class TodoManager {
     removeTodo(index) {
         this.todoList[index - 1].todoDiv.remove();
         this.todoList.splice(index - 1, 1);
+        //clear the url
+        if (this.todoList.length == 0) {
+            chrome.storage.local.set({ "current_link": "" });
+        }
     }
     markCompleted(index) {
         this.todoList[index - 1].completed = true;
     }
 
     updateNumbers() {
-        if(this.todoList.length == 0) return;
-        chrome.storage.local.set({"current_link":this.todoList[0].video_url});
+        if (this.todoList.length == 0) return;
+        chrome.storage.local.set({ "current_link": this.todoList[0].video_url });
         for (let i = 0; i < this.todoList.length; i++) {
-            this.todoList[i].updateNumber(i+1);
+            this.todoList[i].updateNumber(i + 1);
         }
     }
 

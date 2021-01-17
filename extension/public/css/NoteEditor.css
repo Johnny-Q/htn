@@ -22,7 +22,7 @@ body{
     transform: translate(-50%, 0);
 }
 
-.row h3,.row div, .row p{
+.row h3,.row div, .row p, .row input{
     display: inline-block;
     width: fit-content;
 }
@@ -118,4 +118,11 @@ a.button {
     text-align: center;
     font-size: 14px;
     border: 1px solid black;
+}
+
+input{
+    background-color: transparent;
+    outline: none;
+    border: none;
+    color: black;
 }

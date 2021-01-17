@@ -22,13 +22,28 @@ var Note = /** @class */ (function () {
     return Note;
 }());
 var Notebook = /** @class */ (function () {
-    function Notebook(pic_url, name) {
+    function Notebook(pic_url, name, notesList) {
+        if (notesList === void 0) { notesList = []; }
         this.pic_url = pic_url;
         this.name = name;
+        this.notesList = notesList;
+        this.notebookDiv = createElement("div", ["notebook"]);
+        var img = createElement("div", ["cover_img", "ratio", "ratio-2x3"]);
+        img.style["background-image"] = "url('" + pic_url + "')";
+        // img.style = `background-image:url('${pic_url}');`;
+        var label = createElement("div", ["label"]);
+        var small = createElement("small", [], this.notesList.length ? this.notesList.length + " Note" + (this.notesList.length == 1 ? "s" : "") : "No Notes");
+        var h2 = createElement("h2", ["display-6"], name);
+        label.append(small, h2);
+        this.notebookDiv.append(img, label);
+        this.notebookDiv.onclick = function () {
+            window.open("../pages/subject.html", "__blank");
+        };
     }
     Notebook.prototype.addNote = function () {
         var n = new Note();
         this.notesList.push(n);
+        //update the text;
     };
     Notebook.prototype.deleteNote = function (index) {
         this.notesList.splice(index, 1);
@@ -38,15 +53,23 @@ var Notebook = /** @class */ (function () {
     return Notebook;
 }());
 var NotebookManager = /** @class */ (function () {
-    function NotebookManager() {
+    function NotebookManager(notebookGrid) {
+        this.notebookGrid = notebookGrid;
+        this.notebookList = [];
     }
-    NotebookManager.prototype.addNotebook = function () {
-        var picture_url, name;
+    NotebookManager.prototype.addNotebook = function (picture_url, name) {
         var nBook = new Notebook(picture_url, name);
         this.notebookList.push(nBook);
+        this.notebookGrid.append(nBook.notebookDiv);
+        chrome.storage.local.set({ "notebooks": this.exportNotebooks() });
     };
     NotebookManager.prototype.deleteNoteBook = function (index) {
         this.notebookList.splice(index, 1);
+        chrome.storage.local.set({ "notebooks": this.exportNotebooks() });
+    };
+    NotebookManager.prototype.exportNotebooks = function () {
+        var temp = [];
+        return this.notebookList;
     };
     return NotebookManager;
 }());
@@ -55,6 +78,25 @@ document.querySelectorAll(".notebook").forEach(function (notebook) {
         window.open("../pages/subject.html", "__blank");
     };
 });
-document.getElementById("addNotebook").addEventListener("click", function () {
-    NotebookManager.addNotebook();
+var notebook_manager = new NotebookManager(document.querySelector(".notebooks_grid"));
+chrome.storage.local.get("notebooks", function (res) {
+    if (res.notebooks.length == 0)
+        return;
+    console.log(res.notebooks);
+    res.notebooks.forEach(function (notebook) {
+        notebook_manager.addNotebook(notebook.pic_url, notebook.name);
+    });
+});
+// notebook_manager.addNotebook("https://images.unsplash.com/photo-1602928309809-776bf9db8658?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2143&q=80", "Chemistry");
+// notebook_manager.addNotebook("https://images.unsplash.com/photo-1541186877-bb5a745edde5?ixid=MXwxMjA3fDB8MHxzZWFyY2h8OHx8cm9ja2V0fGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1100&q=60", "Rocket Science");
+// notebook_manager.addNotebook("https://images.unsplash.com/photo-1492321936769-b49830bc1d1e?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Nnx8YXJjaGl0ZWN0dXJlfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1100&q=60", "Architecture");
+// notebook_manager.addNotebook("https://images.unsplash.com/photo-1549490349-8643362247b5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80", "Art");
+document.getElementById("createNotebook").addEventListener("click", function () {
+    var name = document.querySelector("#Notebook");
+    var image = document.querySelector("#Image");
+    if (!name.value || !image.value)
+        return;
+    notebook_manager.addNotebook(image.value, name.value);
+    name.value = "";
+    image.value = "";
 });

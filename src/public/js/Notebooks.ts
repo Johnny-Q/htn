@@ -29,6 +29,8 @@ class Notebook {
     pic_url: string;
     name: string;
     notesList: Array<Note>;
+    horizontalNotes: Array<Note>
+    verticalNotes: Array<Note>
     notebookDiv;
     constructor(pic_url, name, notesList = []) {
         this.pic_url = pic_url;
@@ -57,11 +59,9 @@ class Notebook {
         //update the text;
     }
 
-
     deleteNote(index) {
         this.notesList.splice(index, 1);
     }
-
 
     viewNote() {
 
@@ -79,9 +79,17 @@ class NotebookManager {
         let nBook = new Notebook(picture_url, name);
         this.notebookList.push(nBook);
         this.notebookGrid.append(nBook.notebookDiv);
+        chrome.storage.local.set({ "notebooks": this.exportNotebooks() });
     }
     deleteNoteBook(index) {
         this.notebookList.splice(index, 1);
+        chrome.storage.local.set({ "notebooks": this.exportNotebooks() });
+    }
+
+    exportNotebooks() {
+        let temp = [];
+
+        return this.notebookList;
     }
 }
 
@@ -92,15 +100,22 @@ document.querySelectorAll(".notebook").forEach(notebook => {
 });
 
 let notebook_manager = new NotebookManager(document.querySelector(".notebooks_grid"));
-notebook_manager.addNotebook("https://images.unsplash.com/photo-1602928309809-776bf9db8658?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2143&q=80", "Chemistry");
-notebook_manager.addNotebook("https://images.unsplash.com/photo-1541186877-bb5a745edde5?ixid=MXwxMjA3fDB8MHxzZWFyY2h8OHx8cm9ja2V0fGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1100&q=60", "Rocket Science");
-notebook_manager.addNotebook("https://images.unsplash.com/photo-1492321936769-b49830bc1d1e?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Nnx8YXJjaGl0ZWN0dXJlfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1100&q=60", "Architecture");
+chrome.storage.local.get("notebooks", (res) => {
+    if (res.notebooks.length == 0) return;
+    console.log(res.notebooks);
+    res.notebooks.forEach(notebook => {
+        notebook_manager.addNotebook(notebook.pic_url, notebook.name);
+    })
+});
+// notebook_manager.addNotebook("https://images.unsplash.com/photo-1602928309809-776bf9db8658?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2143&q=80", "Chemistry");
+// notebook_manager.addNotebook("https://images.unsplash.com/photo-1541186877-bb5a745edde5?ixid=MXwxMjA3fDB8MHxzZWFyY2h8OHx8cm9ja2V0fGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1100&q=60", "Rocket Science");
+// notebook_manager.addNotebook("https://images.unsplash.com/photo-1492321936769-b49830bc1d1e?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Nnx8YXJjaGl0ZWN0dXJlfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1100&q=60", "Architecture");
 // notebook_manager.addNotebook("https://images.unsplash.com/photo-1549490349-8643362247b5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80", "Art");
 document.getElementById("createNotebook").addEventListener("click", () => {
     let name = document.querySelector("#Notebook");
     let image = document.querySelector("#Image");
 
-    if(!name.value || !image.value) return;
+    if (!name.value || !image.value) return;
 
     notebook_manager.addNotebook(image.value, name.value);
 
